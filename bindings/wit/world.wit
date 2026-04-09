@@ -1,0 +1,5 @@
+package idlab:wasi-usb-guests;
+
+world guest {
+    include wasi:usb/imports@0.2.1;
+}
