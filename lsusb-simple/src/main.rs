@@ -1,4 +1,4 @@
-use bindings::device;
+use bindings::wasi::usb::device;
 
 pub fn main() {
     if let Err(err) = run() {
