@@ -1,6 +1,7 @@
 [workspace]
-members = ["bindings", "lsusb-simple"]
+members = ["bindings", "lsusb-simple", "lsusb-rusb"]
 resolver = "3"
 
 [workspace.dependencies]
 bindings = { path = "bindings" }
+rusb = { path = "../rusb" }
