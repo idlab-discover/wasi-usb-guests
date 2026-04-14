@@ -1,7 +1,15 @@
 [workspace]
-members = ["bindings", "lsusb-simple", "lsusb-rusb"]
+members = [
+    "bindings",
+    "lsusb-simple",
+    "lsusb-rusb",
+    "pacman",
+    "pacman-xbox",
+    "pacman-ps5",
+]
 resolver = "3"
 
 [workspace.dependencies]
 bindings = { path = "bindings" }
 rusb = { path = "../rusb" }
+pacman = { path = "pacman" }
