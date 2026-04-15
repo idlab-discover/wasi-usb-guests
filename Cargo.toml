@@ -6,6 +6,8 @@ members = [
     "pacman",
     "pacman-xbox",
     "pacman-ps5",
+    "snake",
+    "snake-ps5",
 ]
 resolver = "3"
 
@@ -13,3 +15,4 @@ resolver = "3"
 bindings = { path = "bindings" }
 rusb = { path = "../rusb" }
 pacman = { path = "pacman" }
+snake = { path = "snake" }
