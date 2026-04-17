@@ -18,9 +18,9 @@ pub fn parse_ps5_controller_data(data: &[u8]) -> GamepadState {
 
     // Joystick axes (Bytes 1-4)
     let ls_x = (data[offset + 1] as f32 - 128.0) / 128.0;
-    let ls_y = (data[offset + 2] as f32 - 128.0) / 128.0;
+    let ls_y = -((data[offset + 2] as f32 - 128.0) / 128.0);
     let rs_x = (data[offset + 3] as f32 - 128.0) / 128.0;
-    let rs_y = (data[offset + 4] as f32 - 128.0) / 128.0;
+    let rs_y = -((data[offset + 4] as f32 - 128.0) / 128.0);
 
     // Triggers (Bytes 5-6)
     let lt = data[offset + 5] as f32 / 255.0;
@@ -103,6 +103,14 @@ fn main() -> anyhow::Result<()> {
     let endpoint_in = endpoint_in.unwrap();
 
     // Detach kernel driver if needed
+    match handle.kernel_driver_active(interface_number) {
+        Ok(true) => {
+            handle.detach_kernel_driver(interface_number)?;
+        }
+        Ok(false) => {}
+        Err(e) => return Err(e.into()),
+    }
+
     handle.set_auto_detach_kernel_driver(true)?;
 
     handle.claim_interface(interface_number)?;

@@ -66,7 +66,7 @@ pub(crate) fn print_maze(
     let power_status = if power_time > 0 {
         format!(" | POWER: {}s", power_time).yellow().bold()
     } else {
-        "".clear()
+        "             ".clear()
     };
 
     println!(

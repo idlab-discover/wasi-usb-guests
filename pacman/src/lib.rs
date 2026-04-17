@@ -69,9 +69,9 @@ where
                 let mut dy = 0;
                 let mut dx = 0;
 
-                if state.up || state.lstick_y < -0.5 {
+                if state.up || state.lstick_y > 0.5 {
                     dy = -1;
-                } else if state.down || state.lstick_y > 0.5 {
+                } else if state.down || state.lstick_y < -0.5 {
                     dy = 1;
                 } else if state.left || state.lstick_x < -0.5 {
                     dx = -1;
@@ -174,13 +174,14 @@ where
                             target_tile = (current_pos.0 + 2, current_pos.1 + 2);
                         }
                         Personality::Clyde => {
-                            let dist_sq = (ghost.pos.0 as isize - current_pos.0 as isize).pow(2)
-                                + (ghost.pos.1 as isize - current_pos.1 as isize).pow(2);
+                            let row_diff = ghost.pos.0 as isize - current_pos.0 as isize;
+                            let col_diff = ghost.pos.1 as isize - current_pos.1 as isize;
+                            let dist_sq = row_diff * row_diff + col_diff * col_diff;
 
                             if dist_sq > 64 {
                                 target_tile = (current_pos.0, current_pos.1);
                             } else {
-                                target_tile = (13, 0);
+                                target_tile = (12, 1);
                             }
                         }
                     }
@@ -200,15 +201,19 @@ where
                         && maze[nr][nc] != MazeType::Wall
                         && (nr, nc) != ghost.last_pos
                     {
-                        let dist = (((nr - target_tile.0).pow(2) + (nc - target_tile.1).pow(2))
-                            as f32)
-                            .sqrt();
+                        let row_diff = nr as isize - target_tile.0 as isize;
+                        let col_diff = nc as isize - target_tile.1 as isize;
+                        let dist = ((row_diff * row_diff + col_diff * col_diff) as f32).sqrt();
 
                         if dist < min_dist {
                             min_dist = dist;
                             best_dir = Some((nr, nc));
                         }
                     }
+                }
+
+                if best_dir.is_none() {
+                    best_dir = Some(ghost.last_pos);
                 }
 
                 if let Some((nr, nc)) = best_dir {
