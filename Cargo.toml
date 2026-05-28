@@ -8,6 +8,10 @@ members = [
     "pacman-ps5",
     "snake",
     "snake-ps5",
+    "usb-storage",
+    "usb-stick-info",
+    "usb-stick-read",
+    "usb-stick-tree",
 ]
 resolver = "3"
 
@@ -16,3 +20,4 @@ bindings = { path = "bindings" }
 rusb = { path = "../rusb" }
 pacman = { path = "pacman" }
 snake = { path = "snake" }
+usb-storage = { path = "usb-storage" }

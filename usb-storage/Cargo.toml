@@ -1,0 +1,10 @@
+[package]
+name = "usb-storage"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.102"
+fatfs = "0.3"
+log = "0.4"
+rusb = { workspace = true }
