@@ -12,6 +12,10 @@ members = [
     "usb-stick-info",
     "usb-stick-read",
     "usb-stick-tree",
+    "usb-file-reader",
+    "file-read-demo",
+    "usb-config-provider",
+    "toml-config-traverse",
 ]
 resolver = "3"
 

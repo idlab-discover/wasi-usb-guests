@@ -1,0 +1,5 @@
+package idlab:usb-config-provider;
+
+world usb-config-provider {
+    export idlab:config/provider@0.2.0;
+}

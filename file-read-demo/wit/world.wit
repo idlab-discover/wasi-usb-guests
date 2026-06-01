@@ -1,0 +1,5 @@
+package idlab:file-read-demo;
+
+world file-read-demo {
+    import idlab:file/reader@0.2.0;
+}

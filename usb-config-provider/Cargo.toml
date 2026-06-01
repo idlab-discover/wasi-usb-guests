@@ -1,0 +1,12 @@
+[package]
+name = "usb-config-provider"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+usb-storage = { workspace = true }
+wit-bindgen = "0.57.1"
+toml = "1.1.2"

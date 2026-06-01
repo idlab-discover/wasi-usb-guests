@@ -1,0 +1,5 @@
+package idlab:file@0.2.0;
+
+interface reader {
+    read: func(path: string) -> result<string, string>;
+}

@@ -1,0 +1,5 @@
+package idlab:toml-config-traverse;
+
+world toml-config-traverse {
+    import idlab:config/provider@0.2.0;
+}

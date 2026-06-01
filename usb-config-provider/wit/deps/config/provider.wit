@@ -1,0 +1,17 @@
+package idlab:config@0.2.0;
+
+interface provider {
+    /// Get a string config value by dotted key path (e.g., "section.key").
+    get-string: func(key: string) -> result<option<string>, string>;
+
+    get-integer: func(key: string) -> result<option<s64>, string>;
+
+    get-float: func(key: string) -> result<option<f64>, string>;
+
+    get-bool: func(key: string) -> result<option<bool>, string>;
+
+    get-string-list: func(key: string) -> result<option<list<string>>, string>;
+
+    /// List all keys under a given prefix (empty string for root-level keys).
+    list-keys: func(prefix: string) -> result<list<string>, string>;
+}
